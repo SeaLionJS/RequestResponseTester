@@ -10,14 +10,13 @@ async function apiMessage(req, res) {
     //console.log("request", req.body)
     res.setHeader('Content-Type', 'application/json');
     const data = req.body
+    
+    if(data.code === undefined){
+        res.status(500).send({});
+        return
+    }
 
     if(throttler.isRequestApproved()){
-
-        if(data.code === undefined){
-            res.status(500).send({});
-            return
-        }
-
         const timeResponse = await new Promise((resolve)=>{
             setTimeout(()=>{
                 resolve({requestNum: 200, code: data.code})
@@ -27,10 +26,6 @@ async function apiMessage(req, res) {
         res.status(200).send(timeResponse);
     }
     else{
-        if(data.code === undefined){
-            res.status(500).send({});
-            return
-        }
         //console.log("throttle")
         res.status(429).send({code: data.code});
     }

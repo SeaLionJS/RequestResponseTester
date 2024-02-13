@@ -11,5 +11,5 @@ app.use(express.static(path.resolve(__dirname, 'static')));
 app.use(apiRouter)
 
 app.listen(PORT, () => {
-  console.log(`Example app listening on port ${PORT}`)
+  console.log(`Listening on port ${PORT}`)
 })
