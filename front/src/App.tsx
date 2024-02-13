@@ -21,7 +21,7 @@ interface IMessageHadler {
 
 //Зробив для опрацювання вхідних запитів, так як він один, то буде об'єктом
 const messagesHandler: IMessageHadler = {
-  count_limit: 100,
+  count_limit: 1000,
   responses: [],
   request_time: 10,
   count: 0,
