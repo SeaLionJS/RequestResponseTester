@@ -4,12 +4,13 @@ const apiRouter = express.Router();
 
 const RequestThrottler = require("../Controllers/RequestThrottler");
 const throttler = new RequestThrottler(10)
+console.log(throttler.limit)
 throttler.run()
 
 async function apiMessage(req, res) {
     //console.log("request", req.body)
     res.setHeader('Content-Type', 'application/json');
-    res.setHeader('Keep-Alive', 'timeout=60000, max=1000');
+    res.setHeader('Keep-Alive', 'timeout=5, max=100');
     const data = req.body
     
     if(data.code === undefined){

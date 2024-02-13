@@ -2,7 +2,7 @@ import { IMessage } from "../types/types";
 
 export async function fetchApi(ind: number):Promise<IMessage>{
     try{
-        console.log("request time", ind)
+        //console.log("request time", ind)
         const response = await fetch('/api',{
             method: "POST", 
             headers: {
@@ -12,7 +12,7 @@ export async function fetchApi(ind: number):Promise<IMessage>{
         })
     
         const data = await response.json()
-        console.log("response time", ind)
+        //console.log("response time", ind)
     
         return {requestNum: data.code, code: response.status};
     }
